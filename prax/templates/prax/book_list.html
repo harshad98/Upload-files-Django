@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>thenewboston</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Harshad</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'prax-index' %}">Home</a></li>
+
+                    <li><a href="{% url 'book_list' %}">Upload any document</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+</body>
+</html>
+
+{% block content %}
+<h2>books </h2>
+<p><a href="{% url 'upload_book' %}" class="btn btn-primary">Upload books
+</a></p>
+
+
+
+<table class="table mb-0">
+    <thead>
+    <tr>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Downloads</th>
+
+    </tr>
+    </thead>
+
+    {% for book in books %}
+    <tr>
+        <td>
+        {% if book.cover %}
+        <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100px;">
+        {% else %}
+            <span class="text-muted">No cover</span>
+            {% endif %}</td>
+
+        <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+        <td>{{ book.pdf }}</td>
+        <td>
+            <a href="{{ book.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+                Download PDF
+            </a>
+
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

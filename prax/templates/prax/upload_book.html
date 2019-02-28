@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>thenewboston</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Harshad</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About Me</a></li>
+                    <li><a href="#">Upload Song</a></li>
+                    <li><a href="#">Upload video</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+</body>
+</html>
+
+
+
+{% block content %}
+<h2> Upload book </h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload book </button>
+</form>
+{% endblock %}
